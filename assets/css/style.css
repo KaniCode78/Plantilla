@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
 
@@ -17,16 +18,24 @@ body {
     min-height: 100%;
 }
 
-.grid-container {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: repeat(5, 200px);
-    justify-items: start;
-    align-items: start;
+.grid-container>* {
+    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
 }
-    .header {
+
+.header {
     grid-area: header;
     background-color: antiquewhite;
 }
+.header-logo {
+    cursor: pointer;
+    padding: 10px;
+    text-align: left;
+}
+
+
 
 .navbar {
     grid-area: navbar;
@@ -48,3 +57,33 @@ body {
     background-color: blanchedalmond;
 }
 
+.grid-container {
+    display: grid;
+    gap: 10px;
+    grid-template:
+        "header" 100px
+        "navbar" 50px
+        "main" auto
+        "sidebar" 100px
+        "footer" 100px
+}
+
+/* Responsive para tableta, la media query funcionara cuando llegue a mas de 600 pxse cambiara el fondo a azul*/
+@media (min-width: 600px) {
+    .grid-container {
+     grid-template:
+            "header  header" 100px
+            "navbar  navbar" 50px
+            "sidebar main" auto
+            "footer footer" 100px /200px auto
+    }
+}
+
+@media (min-width: 900px) {
+    .grid-container {
+        grid-template:
+            "header header header" 100px
+            "navbar main sidebar" auto
+            "footer footer footer" 100px / 200px auto 200px
+    }
+}
